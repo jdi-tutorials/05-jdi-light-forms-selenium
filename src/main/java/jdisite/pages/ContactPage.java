@@ -1,7 +1,6 @@
 package jdisite.pages;
 
 import jdisite.sections.ContactForm;
-import jdisite.sections.LoginForm;
 
 import static jdisite.utils.DriverUtils.DRIVER;
 import static org.openqa.selenium.support.PageFactory.initElements;

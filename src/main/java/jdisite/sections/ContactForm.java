@@ -4,12 +4,11 @@ import jdisite.entities.ContactInfo;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
-import org.testng.Assert;
 
 import java.util.List;
 
 import static java.lang.String.valueOf;
-import static org.testng.Assert.*;
+import static org.testng.Assert.assertEquals;
 
 public class ContactForm {
     @FindBy(css ="#contact-form #name") WebElement name;

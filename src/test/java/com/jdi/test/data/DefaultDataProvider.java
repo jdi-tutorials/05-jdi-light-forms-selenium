@@ -1,7 +1,6 @@
 package com.jdi.test.data;
 
 import jdisite.entities.ContactInfo;
-import jdisite.entities.User;
 
 public class DefaultDataProvider {
     public static ContactInfo SIMPLE_CONTACT = new ContactInfo()
