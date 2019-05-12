@@ -1,6 +1,5 @@
 package jdisite.pages;
 
-import jdisite.enums.MenuOptions;
 import jdisite.sections.LoginForm;
 import org.openqa.selenium.By;
 
@@ -12,8 +11,8 @@ public class JDISite {
     public static ContactPage contactPage = initElements(DRIVER, ContactPage.class);
 
     public static LoginForm loginForm = initElements(DRIVER, LoginForm.class);
-    public static void selectInMenu(MenuOptions value) {
-        DRIVER.findElement(By.xpath("//*[contains(@class, 'sidebar-menu')]//span[.='"+value.value+"']"))
+    public static void selectInMenu(String value) {
+        DRIVER.findElement(By.xpath("//*[contains(@class, 'sidebar-menu')]//span[.='"+value+"']"))
                 .click();
     }
 }

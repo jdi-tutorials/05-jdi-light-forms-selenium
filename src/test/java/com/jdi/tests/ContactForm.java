@@ -8,7 +8,6 @@ import org.testng.annotations.Test;
 import static com.jdi.states.State.loggedIn;
 import static com.jdi.test.data.DefaultDataProvider.FULL_CONTACT;
 import static com.jdi.test.data.DefaultDataProvider.SIMPLE_CONTACT;
-import static jdisite.enums.MenuOptions.ContactForm;
 import static jdisite.pages.ContactPage.*;
 import static jdisite.pages.JDISite.*;
 import static jdisite.utils.DriverUtils.DRIVER;
@@ -18,9 +17,8 @@ public class ContactForm implements TestsInit {
     @BeforeMethod
     public void before() {
         loggedIn();
-        selectInMenu(ContactForm);
+        selectInMenu("Contact form");
     }
-
     @Test
     public void submitContactDataTest() {
         assertEquals(DRIVER.getCurrentUrl(), ContactPage.URL);
@@ -34,13 +32,5 @@ public class ContactForm implements TestsInit {
         assertEquals(DRIVER.getTitle(), ContactPage.TITLE);
         contactForm.submit(SIMPLE_CONTACT);
         contactForm.check(SIMPLE_CONTACT);
-    }
-
-    @Test
-    public void submitContactFormSimpleTest() {
-        assertEquals(DRIVER.getCurrentUrl(), ContactPage.URL);
-        assertEquals(DRIVER.getTitle(), ContactPage.TITLE);
-        sContactForm.submit(FULL_CONTACT);
-        sContactForm.check(FULL_CONTACT);
     }
 }

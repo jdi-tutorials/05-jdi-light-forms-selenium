@@ -1,19 +1,12 @@
 package jdisite.pages;
 
 import jdisite.sections.ContactForm;
-import jdisite.sections.ShortContactForm;
 
 import static jdisite.utils.DriverUtils.DRIVER;
 import static org.openqa.selenium.support.PageFactory.initElements;
 
-public class ContactPage /*extends BasePage*/ {
+public class ContactPage {
     public static final String URL = "https://jdi-testing.github.io/jdi-light/contacts.html";
     public static final String TITLE = "Contact Form";
     public static ContactForm contactForm = initElements(DRIVER, ContactForm.class);
-
-    /*public ContactPage() { super(
-            "https://jdi-testing.github.io/jdi-light/contacts",
-            "Contact Form");
-    }*/
-    public static ShortContactForm sContactForm = initElements(DRIVER, ShortContactForm.class);
 }

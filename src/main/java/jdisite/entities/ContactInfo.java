@@ -92,7 +92,7 @@ public class ContactInfo {
     }
     @Override
     public String toString() {
-        return format("ContactInfo{name='%s'; lastName='%s'; position='%s'; " +
+        return format("ContactInfo{name='%s'; lastName='%s'; positin='%s'; " +
                 "gender='%s'; religion='%s'; weather='%s'; description='%s'; " +
                 "passportNumber='%s'; passportSeria='%s'; passport='%s'; acceptConditions='%s'; }",
                 name, lastName, position, gender, religion, weather, description,
