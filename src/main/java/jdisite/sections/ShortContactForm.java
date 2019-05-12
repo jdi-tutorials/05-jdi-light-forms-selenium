@@ -10,7 +10,7 @@ import java.util.List;
 import static java.lang.String.valueOf;
 import static org.testng.Assert.assertEquals;
 
-public class SimpleContactForm {
+public class ShortContactForm {
     @FindBy(css ="#contact-form #name") WebElement nameTextField;
     @FindBy(id = "last-name") WebElement lastNameTextField;
     @FindBy(id = "position") WebElement positionTextField;
