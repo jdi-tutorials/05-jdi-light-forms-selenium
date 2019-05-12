@@ -8,6 +8,7 @@ import static org.openqa.selenium.support.PageFactory.initElements;
 
 public class ContactPage /*extends BasePage*/ {
     public static final String URL = "https://jdi-testing.github.io/jdi-light/contacts.html";
+    public static final String TITLE = "Contact Form";
     public static ContactForm contactForm = initElements(DRIVER, ContactForm.class);
 
     /*public ContactPage() { super(

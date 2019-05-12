@@ -24,14 +24,14 @@ public class ContactForm implements TestsInit {
     @Test
     public void submitContactDataTest() {
         assertEquals(DRIVER.getCurrentUrl(), ContactPage.URL);
-        assertEquals(DRIVER.getTitle(), "Contact Form");
+        assertEquals(DRIVER.getTitle(), ContactPage.TITLE);
         contactForm.submit(FULL_CONTACT);
         contactForm.check(FULL_CONTACT);
     }
     @Test
     public void submitContactSimpleDataTest() {
         assertEquals(DRIVER.getCurrentUrl(), ContactPage.URL);
-        assertEquals(DRIVER.getTitle(), "Contact Form");
+        assertEquals(DRIVER.getTitle(), ContactPage.TITLE);
         contactForm.submit(SIMPLE_CONTACT);
         contactForm.check(SIMPLE_CONTACT);
     }
@@ -39,7 +39,7 @@ public class ContactForm implements TestsInit {
     @Test
     public void submitContactFormSimpleTest() {
         assertEquals(DRIVER.getCurrentUrl(), ContactPage.URL);
-        assertEquals(DRIVER.getTitle(), "Contact Form");
+        assertEquals(DRIVER.getTitle(), ContactPage.TITLE);
         sContactForm.submit(FULL_CONTACT);
         sContactForm.check(FULL_CONTACT);
     }
