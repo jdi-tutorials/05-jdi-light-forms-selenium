@@ -2,9 +2,10 @@ package jdisite.entities;
 
 import java.util.Objects;
 
+import static java.lang.String.format;
+
 public class ContactInfo {
-    public String name, lastName, position,
-                    gender, religion, weather, description;
+    public String name, lastName, position, gender, religion, weather, description;
     public int passportNumber, passportSeria;
     public boolean passport, acceptConditions;
     public ContactInfo() {}
@@ -23,62 +24,50 @@ public class ContactInfo {
         this.passport = passport;
         this.acceptConditions = acceptConditions;
     }
-
     public ContactInfo setName(String name) {
         this.name = name;
         return this;
     }
-
     public ContactInfo setLastName(String lastName) {
         this.lastName = lastName;
         return this;
     }
-
     public ContactInfo setPosition(String position) {
         this.position = position;
         return this;
     }
-
     public ContactInfo setGender(String gender) {
         this.gender = gender;
         return this;
     }
-
     public ContactInfo setReligion(String religion) {
         this.religion = religion;
         return this;
     }
-
     public ContactInfo setWeather(String weather) {
         this.weather = weather;
         return this;
     }
-
     public ContactInfo setDescription(String description) {
         this.description = description;
         return this;
     }
-
     public ContactInfo setPassportNumber(int passportNumber) {
         this.passportNumber = passportNumber;
         return this;
     }
-
     public ContactInfo setPassportSeria(int passportSeria) {
         this.passportSeria = passportSeria;
         return this;
     }
-
     public ContactInfo setPassport(boolean passport) {
         this.passport = passport;
         return this;
     }
-
     public ContactInfo setAcceptConditions(boolean acceptConditions) {
         this.acceptConditions = acceptConditions;
         return this;
     }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -96,26 +85,16 @@ public class ContactInfo {
                 Objects.equals(weather, that.weather) &&
                 Objects.equals(description, that.description);
     }
-
     @Override
     public int hashCode() {
         return Objects.hash(name, lastName, position, gender, religion, weather, description, passportNumber, passportSeria, passport, acceptConditions);
     }
-
     @Override
     public String toString() {
-        return "ContactInfo{" +
-                "name='" + name + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", position='" + position + '\'' +
-                ", gender='" + gender + '\'' +
-                ", religion='" + religion + '\'' +
-                ", weather='" + weather + '\'' +
-                ", description='" + description + '\'' +
-                ", passportNumber=" + passportNumber +
-                ", passportSeria=" + passportSeria +
-                ", passport=" + passport +
-                ", acceptConditions=" + acceptConditions +
-                '}';
+        return format("ContactInfo{name='%s'; lastName='%s'; position='%s'; " +
+                "gender='%s'; religion='%s'; weather='%s'; description='%s'; " +
+                "passportNumber='%s'; passportSeria='%s'; passport='%s'; acceptConditions='%s'; }",
+                name, lastName, position, gender, religion, weather, description,
+                passportNumber, passportSeria, passport, acceptConditions);
     }
 }

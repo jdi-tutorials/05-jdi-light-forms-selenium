@@ -11,58 +11,61 @@ import static java.lang.String.valueOf;
 import static org.testng.Assert.assertEquals;
 
 public class ContactForm {
-    @FindBy(css ="#contact-form #name") WebElement name;
-    @FindBy(css ="#contact-form #last-name") WebElement lastName;
-    @FindBy(css ="#contact-form #position") WebElement position;
-    @FindBy(css ="#contact-form #passport-number") WebElement passportNumber;
-    @FindBy(css ="#contact-form #passport-seria") WebElement passportSeria;
-    @FindBy(css ="#contact-form #passport") WebElement passport;
+    @FindBy(css ="#contact-form #name") WebElement nameTextField;
+    @FindBy(id = "last-name") WebElement lastNameTextField;
+    @FindBy(id = "position") WebElement positionTextField;
+    @FindBy(id = "passport-number") WebElement passportNumberTextField;
+    @FindBy(id = "passport-seria") WebElement passportSeriaTextField;
     // Dropdown
-    @FindBy(css ="#contact-form #gender") WebElement gender;
-    private Select gender() {
-        return new Select(gender);
-    }
-    /*@FindBy(id ="gender") WebElement genderExpand;
-    @FindBy(id ="gender") List<WebElement> genderList;
-    @FindBy(id ="gender") WebElement genderValue;*/
+    @FindBy(id = "gender") WebElement gender;
+    private Select gender() { return new Select(gender); }
     // Combobox
-    @FindBy(css ="#contact-form #religion") WebElement religion;
-
+    @FindBy(id = "religion") WebElement religion;
     // MultiDropdown
-    @FindBy(css ="#contact-form #weather .caret") WebElement weatherExpand;
-    @FindBy(css ="#contact-form #weather label") List<WebElement> weatherList;
-    @FindBy(css ="#contact-form #weather button") WebElement weatherValue;
-    @FindBy(css ="#contact-form #weather ul") WebElement weatherIsExpanded;
+    @FindBy(css ="#weather .caret") WebElement weatherExpand;
+    @FindBy(css ="#weather label") List<WebElement> weatherList;
+    @FindBy(css ="#weather button") WebElement weatherValue;
+    @FindBy(css ="#weather ul") WebElement weatherIsExpanded;
     private boolean weatherIsExpanded() {
         return weatherIsExpanded.getAttribute("style").equals("display: block;");
     }
-
-    @FindBy(css ="#contact-form #accept-conditions") WebElement acceptConditions;
-    @FindBy(css ="#contact-form #description") WebElement description;
-
-    @FindBy(css ="#contact-form [type=submit]") WebElement submit;
+    private void selectWeather(String value) {
+        if (!weatherIsExpanded())
+            weatherExpand.click();
+        String[] values = value.split(", ");
+        for (String val : values) {
+            for (WebElement listOption : weatherList) {
+                if (listOption.getText().trim().equals(val))
+                    listOption.click();
+            }
+        }
+    }
+    @FindBy(id = "accept-conditions") WebElement acceptConditionsCheckbox;
+    @FindBy(id = "passport") WebElement passportCheckbox;
+    @FindBy(id = "description") WebElement descriptionText;
+    @FindBy(css ="#contact-form [type=submit]") WebElement submitButton;
 
     public void submit(ContactInfo contact) {
         // TextFields
         if (contact.name != null) {
-            name.clear();
-            name.sendKeys(contact.name);
+            nameTextField.clear();
+            nameTextField.sendKeys(contact.name);
         }
         if (contact.lastName != null) {
-            lastName.clear();
-            lastName.sendKeys(contact.lastName);
+            lastNameTextField.clear();
+            lastNameTextField.sendKeys(contact.lastName);
         }
         if (contact.position != null) {
-            position.clear();
-            position.sendKeys(contact.position);
+            positionTextField.clear();
+            positionTextField.sendKeys(contact.position);
         }
         if (contact.passportNumber != -1) {
-            passportNumber.clear();
-            passportNumber.sendKeys(valueOf(contact.passportNumber));
+            passportNumberTextField.clear();
+            passportNumberTextField.sendKeys(valueOf(contact.passportNumber));
         }
         if (contact.passportSeria != -1) {
-            passportSeria.clear();
-            passportSeria.sendKeys(valueOf(contact.passportSeria));
+            passportSeriaTextField.clear();
+            passportSeriaTextField.sendKeys(valueOf(contact.passportSeria));
         }
         // Dropdown
         if (contact.gender != null) {
@@ -75,45 +78,34 @@ public class ContactForm {
         }
         // MultiDropdown
         if (contact.weather != null) {
-            if (!weatherIsExpanded())
-                weatherExpand.click();
-            String[] values = contact.weather.split(", ");
-            for (String value : values) {
-                int size = weatherList.size();
-                for (int i = 0; i < size; i++) {
-                    WebElement listOption = weatherList.get(i);
-                    if (listOption.getText().trim().equals(value))
-                        listOption.click();
-                }
-            }
+            selectWeather(contact.weather);
         }
         // Checkboxes
-        if (contact.passport && !passport.isSelected() ||
-            !contact.passport && passport.isSelected())
-                passport.click();
-        if (contact.acceptConditions && !acceptConditions.isSelected() ||
-            !contact.acceptConditions && acceptConditions.isSelected())
-                acceptConditions.click();
+        if (contact.passport && !passportCheckbox.isSelected() ||
+                !contact.passport && passportCheckbox.isSelected())
+            passportCheckbox.click();
+        if (contact.acceptConditions && !acceptConditionsCheckbox.isSelected() ||
+                !contact.acceptConditions && acceptConditionsCheckbox.isSelected())
+            acceptConditionsCheckbox.click();
         // TextArea
         if (contact.description != null) {
-            description.clear();
-            description.sendKeys(contact.description);
+            descriptionText.clear();
+            descriptionText.sendKeys(contact.description);
         }
-        submit.click();
+        submitButton.click();
     }
-    
     public void check(ContactInfo contact) {
         // TextFields
         if (contact.name != null)
-            assertEquals(name.getAttribute("value"), contact.name);
+            assertEquals(nameTextField.getAttribute("value"), contact.name);
         if (contact.lastName != null)
-            assertEquals(lastName.getAttribute("value"), contact.lastName);
+            assertEquals(lastNameTextField.getAttribute("value"), contact.lastName);
         if (contact.position != null)
-            assertEquals(position.getAttribute("value"), contact.position);
+            assertEquals(positionTextField.getAttribute("value"), contact.position);
         if (contact.passportNumber != -1)
-            assertEquals(passportNumber.getAttribute("value"), valueOf(contact.passportNumber));
+            assertEquals(passportNumberTextField.getAttribute("value"), valueOf(contact.passportNumber));
         if (contact.passportSeria != -1)
-            assertEquals(passportSeria.getAttribute("value"), valueOf(contact.passportSeria));
+            assertEquals(passportSeriaTextField.getAttribute("value"), valueOf(contact.passportSeria));
         // Dropdown
         if (contact.gender != null)
             assertEquals(gender().getFirstSelectedOption().getText(), contact.gender);
@@ -124,11 +116,10 @@ public class ContactForm {
         if (contact.weather != null)
             assertEquals(weatherValue.getText(), contact.weather);
         // Checkboxes
-        assertEquals(passport.isSelected(), contact.passport);
-        assertEquals(acceptConditions.isSelected(), contact.acceptConditions);
+        assertEquals(passportCheckbox.isSelected(), contact.passport);
+        assertEquals(acceptConditionsCheckbox.isSelected(), contact.acceptConditions);
         // TextArea
         if (contact.description != null)
-            assertEquals(description.getAttribute("value"), contact.description);
+            assertEquals(descriptionText.getAttribute("value"), contact.description);
     }
-
 }

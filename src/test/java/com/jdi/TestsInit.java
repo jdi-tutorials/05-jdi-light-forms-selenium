@@ -1,5 +1,6 @@
 package com.jdi;
 
+import jdisite.pages.HomePage;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 
@@ -13,7 +14,7 @@ public interface TestsInit {
     @BeforeSuite(alwaysRun = true)
     static void setUp() {
         runChromeDriver();
-        DRIVER.navigate().to("https://jdi-testing.github.io/jdi-light/");
+        DRIVER.navigate().to(HomePage.URL);
     }
     @AfterSuite(alwaysRun = true)
     static void teardown() throws IOException {
