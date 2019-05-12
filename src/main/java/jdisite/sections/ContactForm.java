@@ -44,9 +44,7 @@ public class ContactForm {
     @FindBy(id = "passport") WebElement passportCheckbox;
     @FindBy(id = "description") WebElement descriptionText;
     @FindBy(css ="#contact-form [type=submit]") WebElement submitButton;
-
     public void submit(ContactInfo contact) {
-        // TextFields
         if (contact.name != null) {
             nameTextField.clear();
             nameTextField.sendKeys(contact.name);

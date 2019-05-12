@@ -48,8 +48,6 @@ public class ShortContactForm {
         element.clear();
         element.sendKeys(value);
     }
-
-    // Simple methods examples
     public void submit(ContactInfo contact) {
         clearInput(nameTextField, contact.name);
         clearInput(lastNameTextField, contact.lastName);

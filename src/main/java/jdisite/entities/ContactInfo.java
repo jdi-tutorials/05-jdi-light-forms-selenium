@@ -87,7 +87,8 @@ public class ContactInfo {
     }
     @Override
     public int hashCode() {
-        return Objects.hash(name, lastName, position, gender, religion, weather, description, passportNumber, passportSeria, passport, acceptConditions);
+        return Objects.hash(name, lastName, position, gender, religion, weather,
+                description, passportNumber, passportSeria, passport, acceptConditions);
     }
     @Override
     public String toString() {
