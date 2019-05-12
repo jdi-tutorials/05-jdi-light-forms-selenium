@@ -9,9 +9,8 @@ public class DefaultDataProvider {
         .setDescription("JDI - awesome UI autoamtion tool");
 
     public static ContactInfo FULL_CONTACT = new ContactInfo(
-        "Roman", "Full Contact", "ChiefQA",
-        "Female", "Other", "Sun, Snow",
-        "JDI - awesome UI automation tool",
+        "Roman", "Full Contact", "ChiefQA","Female", "Other",
+        "Sun, Snow","JDI - awesome UI automation tool",
         4321, 123456, true, false
     );
 }
