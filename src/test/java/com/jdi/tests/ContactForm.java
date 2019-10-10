@@ -23,23 +23,20 @@ public class ContactForm implements TestsInit {
 
     @Test
     public void submitContactDataTest() {
-        assertEquals(DRIVER.getCurrentUrl(), ContactPage.URL);
-        assertEquals(DRIVER.getTitle(), ContactPage.TITLE);
+        CheckContactPageOpened();
         contactForm.submit(FULL_CONTACT);
         contactForm.check(FULL_CONTACT);
     }
     @Test
     public void submitContactSimpleDataTest() {
-        assertEquals(DRIVER.getCurrentUrl(), ContactPage.URL);
-        assertEquals(DRIVER.getTitle(), ContactPage.TITLE);
+        CheckContactPageOpened();
         contactForm.submit(SIMPLE_CONTACT);
         contactForm.check(SIMPLE_CONTACT);
     }
 
     @Test
     public void submitContactFormSimpleTest() {
-        assertEquals(DRIVER.getCurrentUrl(), ContactPage.URL);
-        assertEquals(DRIVER.getTitle(), ContactPage.TITLE);
+        CheckContactPageOpened();
         sContactForm.submit(FULL_CONTACT);
         sContactForm.check(FULL_CONTACT);
     }
