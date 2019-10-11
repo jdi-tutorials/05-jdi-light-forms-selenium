@@ -1,7 +1,6 @@
 package com.jdi.tests;
 
 import com.jdi.TestsInit;
-import jdisite.pages.ContactPage;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -10,9 +9,7 @@ import static com.jdi.test.data.DefaultDataProvider.FULL_CONTACT;
 import static com.jdi.test.data.DefaultDataProvider.SIMPLE_CONTACT;
 import static jdisite.enums.MenuOptions.ContactForm;
 import static jdisite.pages.ContactPage.*;
-import static jdisite.pages.JDISite.*;
-import static jdisite.utils.DriverUtils.DRIVER;
-import static org.testng.Assert.assertEquals;
+import static jdisite.pages.JDISite.selectInMenu;
 
 public class ContactForm implements TestsInit {
     @BeforeMethod

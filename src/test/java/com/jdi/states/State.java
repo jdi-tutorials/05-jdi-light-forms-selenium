@@ -2,7 +2,8 @@ package com.jdi.states;
 
 import jdisite.entities.DefaultData;
 
-import static jdisite.pages.HomePage.*;
+import static jdisite.pages.HomePage.logout;
+import static jdisite.pages.HomePage.userIcon;
 import static jdisite.pages.JDISite.homePage;
 import static jdisite.pages.JDISite.loginForm;
 
